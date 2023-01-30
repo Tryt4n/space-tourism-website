@@ -1,0 +1,17 @@
+@use "../base/functions" as func;
+
+$mobile: func.em(375);
+$tablet: func.em(768);
+$desktop: func.em(1440);
+
+$breakpoints-up: (
+  "mobile": $mobile,
+  "tablet": $tablet,
+  "desktop": $desktop,
+);
+
+$breakpoints-down: (
+  "mobile": func.em(374.98),
+  "tablet": func.em(767.98),
+  "desktop": func.em(1439.98),
+);

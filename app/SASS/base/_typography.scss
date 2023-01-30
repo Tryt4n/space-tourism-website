@@ -1,0 +1,56 @@
+@use "./font-face" as *;
+@use "./functions" as func;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as c;
+
+$font-barlow: "Barlow Condensed", sans-serif;
+$font-bellefair: "Bellefair", serif;
+
+$nav-text-size: func.rem(16);
+$nav-text-spacing: func.rem(2.7);
+
+$subheading-text-size: func.rem(28);
+
+$subheading-text2-font: $font-bellefair;
+$subheading-text2-size: func.rem(14);
+$subheading-text2-spacing: func.rem(2.35);
+
+$body-text-size: func.rem(18);
+$h1-size: func.rem(150);
+$h2-size: func.rem(100);
+$h3-size: func.rem(56);
+$h4-size: func.rem(32);
+$h5-size: func.rem(28);
+
+body {
+  @include setTypography($body-text-size, normal, $font-barlow, c.$white-text);
+  color: c.$light-blue-text;
+}
+
+h1 {
+  @include setTypography($h1-size, normal, $font-bellefair);
+}
+
+h2 {
+  @include setTypography($h2-size, normal, $font-bellefair);
+}
+
+h3 {
+  @include setTypography($h3-size, normal, $font-bellefair);
+}
+
+h4 {
+  @include setTypography($h4-size, normal, $font-bellefair);
+}
+
+h5 {
+  @include setTypography($h5-size, func.rem(4.75), $font-barlow, c.$light-blue-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: normal;
+}

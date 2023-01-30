@@ -1,0 +1,20 @@
+@use "../base/functions" as func;
+
+$main-transition: 300ms ease-in-out;
+
+$nav-padding-top: func.rem(40);
+$nav-background-blur: func.rem(40.7742);
+$nav-item-padding-y: func.rem(38);
+$nav-item-border-on-hover: func.rem(3);
+
+$nav-text-height: func.rem(20);
+$nav-height: calc($nav-padding-top + ($nav-item-padding-y * 2) + $nav-text-height);
+
+$btn-padding: func.em(10);
+
+// Hover state: opacity .5
+// Active state: opacity 1
+// MOON MARS EUROPA: active całe białe, hover lekko niebieskie z paskiem z opacity na 0.5, bezczynny tylko tekst lekko niebieski
+// Explore button on hover: opacity .1
+// Slidery active:biały, hover: opacity 0.5, bezczynny opacity 0.17
+// Slidery z numerami active: biały background z ciemnym napisem, hover: biały napis tylko z border bez wypełnienia, bezczynny biały napis z border na opacity 0.25

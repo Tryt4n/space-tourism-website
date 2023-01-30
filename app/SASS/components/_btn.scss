@@ -1,0 +1,9 @@
+@use "../abstracts/variables" as v;
+
+.btn {
+  background: none;
+  border: none;
+  padding: v.$btn-padding;
+  cursor: pointer;
+  font-family: inherit;
+}

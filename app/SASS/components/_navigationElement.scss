@@ -1,0 +1,25 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/colors" as c;
+
+.navigation-element {
+  position: relative;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    bottom: 0;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: transparent;
+    translate: -100% v.$nav-item-border-on-hover;
+    transition: v.$main-transition;
+    opacity: 0.5;
+  }
+  &:hover::after,
+  &:focus::after {
+    background: c.$white-text;
+  }
+}

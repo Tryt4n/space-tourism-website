@@ -1,0 +1,63 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as c;
+
+body {
+  background-color: c.$dark-blue;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.background-home {
+  background-image: url("/app/assets/home/background-home-desktop.jpg");
+}
+
+.background-destination {
+  background-image: url("/app/assets/destination/background-destination-desktop.jpg");
+}
+
+.background-crew {
+  background-image: url("/app/assets/crew/background-crew-desktop.jpg");
+}
+
+.background-technology {
+  background-image: url("/app/assets/technology/background-technology-desktop.jpg");
+}
+
+@include tablet() {
+  .background-home {
+    background-image: url("/app/assets/home/background-home-tablet.jpg");
+  }
+
+  .background-destination {
+    background-image: url("/app/assets/destination/background-destination-tablet.jpg");
+  }
+
+  .background-crew {
+    background-image: url("/app/assets/crew/background-crew-tablet.jpg");
+  }
+
+  .background-technology {
+    background-image: url("/app/assets/technology/background-technology-tablet.jpg");
+  }
+}
+
+@include mobile() {
+  .background-home {
+    background-image: url("/app/assets/home/background-home-mobile.jpg");
+  }
+
+  .background-destination {
+    background-image: url("/app/assets/destination/background-destination-mobile.jpg");
+  }
+
+  .background-crew {
+    background-image: url("/app/assets/crew/background-crew-mobile.jpg");
+  }
+
+  .background-technology {
+    background-image: url("/app/assets/technology/background-technology-mobile.jpg");
+  }
+}

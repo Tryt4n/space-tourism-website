@@ -1,0 +1,180 @@
+@forward "../components/index";
+@forward "../layout/index";
+
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "../base/typography" as typo;
+@use "../base/functions" as func;
+
+.destination {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: func.rem(76) func.rem(165) func.rem(118);
+  justify-items: start;
+  gap: func.rem(157);
+  text-transform: uppercase;
+
+  &__header {
+    padding-bottom: func.rem(97);
+    color: c.$white-text;
+
+    & em {
+      padding-right: func.rem(28);
+      color: c.$white-text;
+      font-weight: bold;
+      opacity: 0.25;
+    }
+  }
+
+  &__image {
+    padding-left: func.rem(65);
+  }
+
+  &__text {
+    align-self: end;
+    padding-bottom: func.rem(50);
+  }
+
+  &__list {
+    @include flex(row, flex-start, center);
+    gap: func.rem(35);
+    margin-bottom: func.rem(37);
+
+    &__item {
+      padding-bottom: 0.75rem;
+      translate: 0 calc((v.$nav-item-border-on-hover / 2) * -1);
+      letter-spacing: func.rem(2.7);
+
+      &:where(.active) {
+        color: c.$white-text;
+        translate: 0;
+      }
+    }
+  }
+
+  &__planet-name {
+    margin-bottom: func.rem(14);
+  }
+
+  &__description {
+    text-transform: none;
+    padding-bottom: func.rem(54);
+    border-bottom: func.rem(1) solid hsl(231, 15%, 26%);
+    margin-bottom: func.rem(28);
+  }
+
+  &__subheadings-wrap {
+    @include flex();
+    gap: func.rem(79);
+  }
+
+  &__subheader2 {
+    font-size: typo.$subheading-text2-size;
+    letter-spacing: typo.$subheading-text2-spacing;
+    font-family: typo.$subheading-text2-font;
+    color: c.$light-blue-text;
+    margin-bottom: 0.75rem;
+  }
+
+  &__subheader1 {
+    font-size: typo.$subheading-text-size;
+  }
+}
+
+@include mobileAndTablet {
+  .destination {
+    @include flex(column, flex-start, flex-end);
+    padding: func.rem(40) func.rem(38.5) func.rem(62);
+    gap: func.rem(53);
+
+    &__presentation {
+      width: 100%;
+      @include flex(column);
+    }
+
+    &__header {
+      font-size: 1.25rem;
+      letter-spacing: func.rem(3.38);
+      padding-bottom: func.rem(60);
+
+      & em {
+        padding-right: func.rem(18);
+      }
+    }
+
+    &__image {
+      padding: 0;
+      height: func.rem(300);
+      width: func.rem(300);
+      align-self: center;
+    }
+
+    &__text {
+      @include flex(column, flex-start, center);
+      padding: 0 func.rem(60);
+    }
+
+    &__list {
+      margin-bottom: func.rem(32);
+      &__item {
+        font-size: 1rem;
+      }
+    }
+
+    &__planet-name {
+      font-size: func.rem(80);
+    }
+
+    &__description {
+      padding-bottom: func.rem(49);
+      text-align: center;
+    }
+
+    &__subheadings-wrap {
+      text-align: center;
+    }
+  }
+}
+
+@include mobile() {
+  .destination {
+    padding-top: 1.5rem;
+    padding-bottom: func.rem(58);
+    gap: func.rem(26);
+
+    &__presentation {
+      text-align: center;
+    }
+
+    &__header {
+      font-size: 16px;
+      padding-bottom: 2rem;
+    }
+
+    &__image {
+      width: func.rem(170);
+      height: func.rem(170);
+    }
+
+    &__text {
+      padding: 0;
+    }
+
+    &__planet-name {
+      font-size: func.rem(56);
+    }
+
+    &__description {
+      font-size: func.rem(15);
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    &__subheadings-wrap {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+}

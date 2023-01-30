@@ -1,0 +1,52 @@
+@use "./colors" as c;
+@use "./breakpoints" as b;
+
+@mixin setTypography($size, $spacing: normal, $font: "Barlow Condensed", $color: c.$white-text) {
+  font-size: $size;
+  letter-spacing: $spacing;
+  font-family: $font;
+  color: $color;
+}
+
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin mobile() {
+  @media (width < b.$tablet) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (b.$tablet <= width) and (width < b.$desktop) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media (width >= b.$desktop) {
+    @content;
+  }
+}
+
+@mixin mobileAndTablet() {
+  @media (width < b.$desktop) {
+    @content;
+  }
+}
+
+@mixin tabletAndDesktop() {
+  @media (width >= b.$tablet) {
+    @content;
+  }
+}
+
+@mixin mobileAndDesktop() {
+  @media (b.$tablet < width) and (width >= b.$desktop) {
+    @content;
+  }
+}

@@ -1,0 +1,140 @@
+@forward "../components/index";
+
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "../base/typography" as typo;
+@use "../base/functions" as func;
+
+.active {
+  border-bottom: 3px solid c.$white-text;
+}
+.nav__menu--item.active::after {
+  content: none;
+}
+
+.btn-hamburger,
+.btn-close {
+  display: none;
+}
+
+a[tabindex="-1"] {
+  pointer-events: none;
+  cursor: default;
+}
+
+.nav {
+  position: relative;
+  padding-top: v.$nav-padding-top;
+  padding-left: func.rem(56);
+  @include flex(row, space-between, center);
+  &::before {
+    @include desktop() {
+      position: absolute;
+      content: "";
+      left: func.rem(167);
+      right: func.rem(800);
+      height: func.rem(1);
+      background-color: c.$white-text;
+      z-index: 1;
+    }
+  }
+  @include mobileAndTablet() {
+    padding-top: 0;
+    padding-left: func.rem(39);
+  }
+  @include mobile() {
+    padding-top: func.rem(24);
+    padding-left: func.rem(24);
+  }
+
+  &__menu {
+    padding: v.$nav-item-padding-y;
+    padding-left: func.rem(123);
+    padding-right: func.rem(165);
+    @include flex(row, center, center);
+    gap: 3rem;
+    background: c.$nav-background;
+    backdrop-filter: blur(40.7742px);
+    font-size: typo.$nav-text-size;
+    letter-spacing: typo.$nav-text-spacing;
+
+    @include mobileAndTablet() {
+      padding-left: func.rem(47);
+      padding-right: func.rem(47);
+    }
+
+    &--item {
+      padding: calc(v.$nav-item-padding-y - v.$nav-item-border-on-hover) 0;
+      word-spacing: func.rem(11);
+      @include tablet() {
+        word-spacing: 0;
+      }
+
+      & em {
+        font-weight: bold;
+        @include tablet() {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@include mobile() {
+  .active {
+    border: none;
+    opacity: 0.5;
+  }
+
+  .btn-hamburger,
+  .btn-close {
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    right: 0;
+    margin-top: calc(func.rem(34) - v.$btn-padding);
+    margin-right: calc(func.rem(24) - v.$btn-padding);
+    fill: c.$white-text;
+    transition: v.$main-transition;
+
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+    }
+  }
+  .btn-hamburger {
+    display: inherit;
+  }
+
+  .nav {
+    &__menu {
+      @include flex(column);
+      gap: 2rem;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 350px;
+      max-width: 66vw;
+      z-index: 100;
+      padding: 0;
+      padding-left: 2rem;
+      transition: v.$main-transition;
+      & li:first-child {
+        margin-top: func.rem(118);
+      }
+
+      &--item {
+        transition: v.$main-transition;
+        &:hover,
+        &:focus {
+          opacity: 0.5;
+        }
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}

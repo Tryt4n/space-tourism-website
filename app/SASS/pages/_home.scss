@@ -1,0 +1,135 @@
+@forward "../layout/index";
+
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "../base/typography" as typo;
+@use "../base/functions" as func;
+
+.home {
+  @include flex(row, space-between, flex-end);
+  gap: func.rem(386);
+  padding: 0 func.rem(165) func.rem(131);
+  height: calc(100vh - v.$nav-height);
+
+  &__text-wrap {
+    width: 50%;
+  }
+
+  &__subheading {
+    text-transform: uppercase;
+  }
+
+  &__heading {
+    margin: 1.5rem 0;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    line-height: 2rem;
+  }
+
+  &__btn-wrap {
+    width: 50%;
+    @include flex(row, flex-end, flex-end);
+  }
+
+  &__btn {
+    position: relative;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: func.rem(2);
+    padding: func.rem(118) func.rem(63);
+    background-color: c.$white-text;
+    border-radius: 50%;
+    outline: none;
+    &::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      height: 100%;
+      width: 100%;
+      scale: 1.5;
+      border-radius: 50%;
+      background-color: c.$white-text;
+      z-index: -1;
+      opacity: 0;
+      transition: v.$main-transition;
+    }
+    &:focus::after,
+    &:hover::after {
+      opacity: 0.5;
+    }
+  }
+}
+
+@include mobileAndTablet() {
+  .home {
+    @include flex(column, flex-start, center);
+    padding: 0;
+
+    &__text-wrap {
+      width: 100%;
+      text-align: center;
+    }
+
+    &__btn-wrap {
+      width: 100%;
+      @include flex(row, center, center);
+    }
+  }
+}
+
+@include tablet() {
+  .home {
+    gap: func.rem(164);
+    padding-top: func.rem(98);
+
+    &__text-wrap {
+      padding: 0 func.rem(159);
+    }
+
+    &__subheading {
+      font-size: func.rem(20);
+    }
+
+    &__text {
+      font-size: 1rem;
+      line-height: func.rem(28);
+    }
+
+    &__btn {
+      padding: func.rem(103) func.rem(47);
+    }
+  }
+}
+
+@include mobile() {
+  .home {
+    gap: func.rem(81);
+    padding: 4rem 1.5rem;
+
+    &__subheading {
+      font-size: 1rem;
+    }
+
+    &__heading {
+      font-size: func.rem(80);
+    }
+
+    &__text {
+      font-size: func.rem(15);
+      line-height: func.rem(25);
+    }
+
+    &__btn {
+      font-size: 1.25rem;
+      letter-spacing: func.rem(1.25);
+      padding: func.rem(68) func.rem(27.5) func.rem(59) func.rem(29.5);
+
+      &::after {
+        scale: 1.4;
+      }
+    }
+  }
+}

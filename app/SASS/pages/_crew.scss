@@ -1,0 +1,7 @@
+@forward "../layout/index";
+
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "../base/typography" as typo;
+@use "../base/functions" as func;
