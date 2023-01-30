@@ -5,3 +5,175 @@
 @use "../abstracts/variables" as v;
 @use "../base/typography" as typo;
 @use "../base/functions" as func;
+
+.crew {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: func.rem(62) func.rem(137) 0 func.rem(166);
+  justify-items: start;
+  gap: func.rem(81);
+  height: calc(100vh - v.$nav-height);
+  text-transform: uppercase;
+
+  &__wrapper {
+    @include flex(column, flex-start, flex-start);
+  }
+
+  &__header {
+    padding-top: func.rem(34);
+  }
+
+  &__type {
+    padding-top: func.rem(154);
+    padding-bottom: func.rem(15);
+    opacity: 0.5;
+  }
+
+  &__name {
+    padding-bottom: func.rem(27);
+  }
+
+  &__text {
+    padding-bottom: func.rem(120);
+    line-height: 2rem;
+    text-transform: none;
+  }
+
+  &__btn-wrapper {
+    padding-bottom: func.rem(94);
+  }
+
+  &__btn {
+    margin-right: 1.5rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__image {
+    align-self: end;
+    justify-self: end;
+  }
+}
+
+@include mobileAndTablet() {
+  .crew {
+    @include flex(column);
+    height: 100%;
+    padding: 0;
+
+    &__wrapper {
+      align-items: center;
+    }
+
+    &__text {
+      text-align: center;
+    }
+
+    &__image {
+      align-self: center;
+    }
+  }
+}
+
+@include tablet() {
+  .crew {
+    gap: func.rem(40);
+    overflow-y: hidden;
+
+    &__header {
+      padding-top: func.rem(40);
+      padding-left: func.rem(38.5);
+      align-self: flex-start;
+    }
+
+    &__type {
+      padding-top: func.rem(60);
+      padding-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    &__name {
+      font-size: func.rem(40);
+      padding-bottom: 1rem;
+    }
+
+    &__text {
+      padding-bottom: func.rem(40);
+      font-size: 1rem;
+      max-width: func.rem(460);
+      line-height: func.rem(28);
+    }
+
+    &__btn-wrapper {
+      padding-bottom: 0;
+    }
+
+    &__btn {
+      margin-right: 1rem;
+    }
+
+    &__image {
+      width: func.rem(456.37);
+      height: func.rem(572);
+      align-self: center;
+      translate: 0 func.rem(40);
+    }
+  }
+}
+
+@include mobile() {
+  .crew {
+    position: relative;
+    gap: 0;
+
+    &__header {
+      position: absolute;
+      top: 0;
+      padding-top: 1.5rem;
+      translate: 0 func.rem(-298);
+    }
+
+    &__image {
+      height: func.rem(298);
+      position: relative;
+      padding-top: func.rem(75);
+      translate: 0 func.rem(-223);
+    }
+
+    &__wrapper {
+      translate: 0 func.rem(298);
+    }
+
+    &__type {
+      order: 2;
+      padding: 0;
+      padding-bottom: 0.5rem;
+      font-size: 1rem;
+      line-height: func.rem(18.34);
+    }
+
+    &__name {
+      order: 3;
+      font-size: 1.5rem;
+      padding-bottom: 1rem;
+    }
+
+    &__text {
+      order: 4;
+      padding: 0 1.5rem;
+      font-size: func.rem(15);
+      line-height: func.rem(25);
+      max-width: func.rem(450);
+    }
+
+    &__btn-wrapper {
+      order: 1;
+      padding: 2rem 0;
+      padding-top: 1.4rem;
+      border-top: 1px solid hsl(231, 15%, 26%);
+      width: 90%;
+      text-align: center;
+    }
+  }
+}

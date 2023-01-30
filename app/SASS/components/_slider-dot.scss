@@ -1,0 +1,31 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "../base/functions" as func;
+
+.slider-dot {
+  background-color: c.$white-text;
+  border-radius: 50%;
+  padding: 0;
+  height: func.rem(15);
+  width: func.rem(15);
+  opacity: 0.17;
+  transition: v.$main-transition;
+  outline: none;
+
+  @include mobileAndTablet() {
+    height: func.rem(10);
+    width: func.rem(10);
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+}
+
+.slider-dot:disabled {
+  border-bottom: none;
+  opacity: 1;
+  cursor: auto;
+}

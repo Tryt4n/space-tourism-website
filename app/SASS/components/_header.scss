@@ -1,0 +1,27 @@
+@use "../abstracts/colors" as c;
+@use "../base/functions" as func;
+@use "../abstracts/mixins" as *;
+
+.header {
+  color: c.$white-text;
+
+  & em {
+    padding-right: func.rem(28);
+    color: c.$white-text;
+    font-weight: bold;
+    opacity: 0.25;
+  }
+}
+
+@include tablet() {
+  .header {
+    font-size: 1.25rem;
+    letter-spacing: func.rem(3.38);
+  }
+}
+
+@include mobile() {
+  .header {
+    font-size: 16px;
+  }
+}

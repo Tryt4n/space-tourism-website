@@ -1,0 +1,10 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as c;
+
+.active {
+  border-bottom: 3px solid c.$white-text;
+  @include mobile() {
+    border: none;
+    opacity: 0.5;
+  }
+}
