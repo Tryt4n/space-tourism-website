@@ -1,0 +1,45 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "../base/functions" as func;
+
+.slider-digit {
+  height: func.rem(80);
+  width: func.rem(80);
+  @include flex(row, center, center);
+  outline: none;
+  background: transparent;
+  border: 1px solid c.$white-text-opaque;
+  border-radius: 50%;
+  color: c.$white-text;
+  font-size: 2rem;
+  line-height: func.rem(36.67);
+  transition: v.$main-transition;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    border-color: c.$white-text;
+  }
+
+  @include tablet() {
+    width: func.rem(60);
+    height: func.rem(60);
+    font-size: func.rem(24);
+    line-height: func.rem(27.5);
+  }
+  @include mobile() {
+    width: func.rem(40);
+    height: func.rem(40);
+    font-size: 1rem;
+    line-height: func.rem(18.34);
+  }
+}
+
+.slider-digit.active {
+  color: c.$dark-blue;
+  border-color: c.$white-text;
+  background: c.$white-text;
+  cursor: auto;
+  opacity: 1;
+}

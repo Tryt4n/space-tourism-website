@@ -5,3 +5,159 @@
 @use "../abstracts/variables" as v;
 @use "../base/typography" as typo;
 @use "../base/functions" as func;
+
+.technology {
+  padding-left: func.rem(166);
+  padding-bottom: func.rem(101);
+  height: calc(100vh - v.$nav-height);
+  @include flex(column, space-between);
+  text-transform: uppercase;
+
+  &__header {
+    padding-top: func.rem(96);
+  }
+
+  &__main-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  &__wrapper {
+    @include flex(row, flex-start, center);
+    gap: func.rem(80);
+  }
+
+  &__list {
+    @include flex(column);
+    gap: 2rem;
+  }
+
+  &__subheading {
+    font-size: 1rem;
+    line-height: func.rem(19.2);
+    letter-spacing: func.rem(2.7);
+    padding-bottom: func.rem(11);
+  }
+
+  &__title {
+    padding-bottom: 1rem;
+  }
+
+  &__text {
+    text-transform: none;
+    line-height: 2rem;
+    padding-right: func.rem(26);
+  }
+
+  &__image {
+    justify-self: end;
+  }
+}
+
+@include mobileAndTablet() {
+  .technology {
+    padding: 0;
+    justify-content: flex-start;
+
+    &__main-wrapper {
+      grid-template-columns: 1fr;
+      grid-template-rows: fit-content 1fr;
+    }
+
+    &__wrapper {
+      order: 2;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    &__list {
+      gap: 1rem;
+    }
+
+    &__text {
+      padding-right: 0;
+    }
+
+    &__list {
+      flex-direction: row;
+    }
+
+    &__image {
+      order: 1;
+      width: 100%;
+    }
+  }
+}
+
+@include tablet() {
+  .technology {
+    &__header {
+      padding: func.rem(40) 0 func.rem(60) func.rem(38.5);
+    }
+
+    &__image {
+      padding-bottom: func.rem(56);
+    }
+
+    &__wrapper {
+      gap: func.rem(44);
+    }
+
+    &__text-wrap {
+      min-width: func.rem(450);
+      padding: 0 func.rem(155) func.rem(97);
+    }
+
+    &__subheading {
+      padding-bottom: func.rem(11);
+    }
+
+    &__title {
+      font-size: func.rem(40);
+    }
+
+    &__text {
+      font-size: 1rem;
+      line-height: func.rem(28);
+    }
+  }
+}
+
+@include mobile() {
+  .technology {
+    &__header {
+      padding: func.rem(24) 0 2rem;
+      text-align: center;
+    }
+
+    &__image {
+      padding-bottom: func.rem(34);
+    }
+
+    &__wrapper {
+      gap: func.rem(26);
+    }
+
+    &__text-wrap {
+      padding: 0 1.5rem func.rem(56);
+      max-width: func.rem(500);
+    }
+
+    &__subheading {
+      font-size: func.rem(14);
+      line-height: func.rem(16.8);
+      letter-spacing: func.rem(2.36);
+      padding-bottom: func.rem(9);
+    }
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__text {
+      font-size: func.rem(15);
+      line-height: func.rem(25);
+    }
+  }
+}

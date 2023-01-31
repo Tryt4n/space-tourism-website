@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/dist/style.css" />
     <script src="/app/script/script.js" type="module"></script>
-    <title>Space tourism website</title>
+    <title>Space tourism website | DESTINATION</title>
   </head>
   <body class="background-destination">
     <header>
       <nav class="nav">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" alt="Logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" alt="Logo" role="img">
           <g fill="none" fill-rule="evenodd">
             <circle cx="24" cy="24" r="24" fill="#FFF" />
             <path
@@ -21,7 +21,12 @@
           </g>
         </svg>
 
-        <button aria-hidden="true" class="btn btn-hamburger" data-hamburger-btn>
+        <button
+          aria-hidden="true"
+          class="btn btn-hamburger"
+          data-hamburger-btn
+          aria-label="Opening menu button"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21">
             <g fill="#currentColor" fill-rule="evenodd">
               <path d="M0 0h24v3H0zM0 9h24v3H0zM0 18h24v3H0z" />
@@ -29,7 +34,12 @@
           </svg>
         </button>
 
-        <button aria-hidden="true" class="btn btn-close" data-close-btn>
+        <button
+          aria-hidden="true"
+          class="btn btn-close"
+          data-close-btn
+          aria-label="Closing menu button"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21">
             <g fill="#currentColor" fill-rule="evenodd">
               <path d="M2.575.954l16.97 16.97-2.12 2.122L.455 3.076z" />
@@ -73,7 +83,7 @@
             alt="Moon Image"
             srcset="/app/assets/destination/image-moon.webp"
             class="destination__image"
-            data-destination-image
+            data-planet-image
           />
         </div>
 
@@ -81,36 +91,36 @@
           <ul class="destination__list">
             <li
               class="navigation-element destination__list__item active"
-              tabindex="1"
+              tabindex="-1"
               data-destination-moon
             >
               moon
             </li>
             <li
               class="navigation-element destination__list__item"
-              tabindex="1"
+              tabindex="0"
               data-destination-mars
             >
               mars
             </li>
             <li
               class="navigation-element destination__list__item"
-              tabindex="1"
+              tabindex="0"
               data-destination-europa
             >
               europa
             </li>
             <li
               class="navigation-element destination__list__item"
-              tabindex="1"
+              tabindex="0"
               data-destination-titan
             >
               titan
             </li>
           </ul>
-          <h2 class="destination__planet-name">moon</h2>
+          <h2 class="destination__planet-name" data-planet-name>moon</h2>
 
-          <p class="destination__description">
+          <p class="destination__description" data-planet-description>
             See our planet as you’ve never seen it before. A perfect relaxing trip away to help
             regain perspective and come back refreshed. While you’re there, take in some history by
             visiting the Luna 2 and Apollo 11 landing sites.
@@ -118,12 +128,12 @@
 
           <div class="destination__subheadings-wrap">
             <div>
-              <h3 class="destination__subheader2">avg. distance</h3>
-              <h4 class="destination__subheader1">384,400 KM</h4>
+              <h3 class="destination__subheader2" data-planet-distance-subtitle>avg. distance</h3>
+              <h4 class="destination__subheader1" data-planet-distance>384,400 KM</h4>
             </div>
             <div>
-              <h3 class="destination__subheader2">est. travel time</h3>
-              <h4 class="destination__subheader1">3 days</h4>
+              <h3 class="destination__subheader2" data-planet-time-subtitle>est. travel time</h3>
+              <h4 class="destination__subheader1" data-planet-time>3 days</h4>
             </div>
           </div>
         </div>

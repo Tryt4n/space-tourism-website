@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/dist/style.css" />
     <script src="/app/script/script.js" type="module"></script>
-    <title>Space tourism website</title>
+    <title>Space tourism website | TECHNOLOGY</title>
   </head>
   <body class="background-technology">
     <header>
       <nav class="nav">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" alt="Logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" alt="Logo" role="img">
           <g fill="none" fill-rule="evenodd">
             <circle cx="24" cy="24" r="24" fill="#FFF" />
             <path
@@ -21,7 +21,13 @@
           </g>
         </svg>
 
-        <button aria-hidden="true" class="btn btn-hamburger" tabindex="-1" data-hamburger-btn>
+        <button
+          aria-hidden="true"
+          class="btn btn-hamburger"
+          tabindex="-1"
+          data-hamburger-btn
+          aria-label="Opening menu button"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21">
             <g fill="#currentColor" fill-rule="evenodd">
               <path d="M0 0h24v3H0zM0 9h24v3H0zM0 18h24v3H0z" />
@@ -29,7 +35,13 @@
           </svg>
         </button>
 
-        <button aria-hidden="true" class="btn btn-close" tabindex="-1" data-close-btn>
+        <button
+          aria-hidden="true"
+          class="btn btn-close"
+          tabindex="-1"
+          data-close-btn
+          aria-label="Closing menu button"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21">
             <g fill="#currentColor" fill-rule="evenodd">
               <path d="M2.575.954l16.97 16.97-2.12 2.122L.455 3.076z" />
@@ -65,7 +77,44 @@
     </header>
 
     <main>
-      <section class=""></section>
+      <section class="technology">
+        <h5 class="header technology__header"><em>03</em>&nbsp;space launch 101</h5>
+
+        <div class="technology__main-wrapper">
+          <div class="technology__wrapper">
+            <ol class="technology__list">
+              <li
+                class="slider-digit active"
+                tabindex="-1"
+                role="button"
+                disabled
+                aria-disabled="true"
+              >
+                1
+              </li>
+              <li class="slider-digit" tabindex="0" role="button">2</li>
+              <li class="slider-digit" tabindex="0" role="button">3</li>
+            </ol>
+
+            <div class="technology__text-wrap">
+              <p class="technology__subheading">the terminology&nbsp;...</p>
+              <h3 class="technology__title">launch vehicle</h3>
+              <p class="technology__text">
+                A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a
+                payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X
+                carrier rocket is the most powerful in operation. Standing 150 metres tall, it's
+                quite an awe-inspiring sight on the launch pad!
+              </p>
+            </div>
+          </div>
+
+          <img
+            src="/app/assets/technology/image-launch-vehicle-portrait.jpg"
+            alt="Launch rocket image"
+            class="technology__image"
+          />
+        </div>
+      </section>
     </main>
   </body>
 </html>

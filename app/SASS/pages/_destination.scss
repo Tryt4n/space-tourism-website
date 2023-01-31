@@ -18,13 +18,6 @@
   &__header {
     padding-top: func.rem(34);
     padding-bottom: func.rem(97);
-
-    & em {
-      padding-right: func.rem(28);
-      color: inherit;
-      font-weight: bold;
-      opacity: 0.25;
-    }
   }
 
   &__image {
@@ -51,6 +44,7 @@
       &:where(.active) {
         color: c.$white-text;
         translate: 0;
+        cursor: auto;
       }
     }
   }
@@ -98,10 +92,6 @@
 
     &__header {
       padding-bottom: func.rem(60);
-
-      & em {
-        padding-right: func.rem(18);
-      }
     }
 
     &__image {
