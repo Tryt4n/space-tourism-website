@@ -194,11 +194,13 @@ body {
   width: 100%;
   background: transparent;
   translate: -100% 0.1875rem;
-  transition: 300ms ease-in-out;
+  transition: 500ms ease-in-out;
   opacity: 0.5;
+  transform: scaleX(0);
 }
 .navigation-element:hover::after, .navigation-element:focus::after {
   background: hsl(0deg, 0%, 100%);
+  transform: scaleX(1);
 }
 
 .navigation-element.active::after {
