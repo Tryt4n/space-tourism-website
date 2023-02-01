@@ -15,12 +15,14 @@
     width: 100%;
     background: transparent;
     translate: -100% v.$nav-item-border-on-hover;
-    transition: v.$main-transition;
+    transition: 500ms ease-in-out;
     opacity: 0.5;
+    transform: scaleX(0);
   }
   &:hover::after,
   &:focus::after {
     background: c.$white-text;
+    transform: scaleX(1);
   }
 }
 
