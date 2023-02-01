@@ -23,3 +23,9 @@
     background: c.$white-text;
   }
 }
+
+.navigation-element.active {
+  &::after {
+    display: none;
+  }
+}

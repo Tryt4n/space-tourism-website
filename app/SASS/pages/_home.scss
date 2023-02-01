@@ -9,7 +9,7 @@
 .home {
   @include flex(row, space-between, flex-end);
   gap: func.rem(386);
-  padding: 0 func.rem(165) func.rem(131);
+  padding: 0 11.5vw 14.5vh;
   height: calc(100vh - v.$nav-height);
 
   &__text-wrap {
@@ -54,7 +54,7 @@
       background-color: c.$white-text;
       z-index: -1;
       opacity: 0;
-      transition: v.$main-transition;
+      transition: 1000ms ease-in;
     }
     &:focus::after,
     &:hover::after {

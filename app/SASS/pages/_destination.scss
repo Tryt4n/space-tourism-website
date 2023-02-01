@@ -11,13 +11,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: func.rem(62) func.rem(165) func.rem(118);
-  justify-items: start;
   gap: func.rem(157);
   text-transform: uppercase;
+  height: calc(100vh - v.$nav-height);
+  align-items: center;
 
   &__header {
-    padding-top: func.rem(34);
+    padding-top: func.rem(44);
     padding-bottom: func.rem(97);
+    align-self: start;
   }
 
   &__image {
@@ -26,8 +28,7 @@
   }
 
   &__text {
-    align-self: end;
-    padding-bottom: func.rem(50);
+    padding-top: calc(func.rem(70) + func.rem(78));
     line-height: 2rem;
   }
 
@@ -79,6 +80,22 @@
   }
 }
 
+@include desktop() {
+  .destination {
+    &__presentation {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__image {
+      justify-self: flex-end;
+      width: 27vw;
+    }
+  }
+}
+
 @include mobileAndTablet() {
   .destination {
     @include flex(column, flex-start, flex-end);
@@ -96,14 +113,14 @@
 
     &__image {
       padding: 0;
-      height: func.rem(300);
-      width: func.rem(300);
+      width: 38.5vw;
       align-self: center;
     }
 
     &__text {
       @include flex(column, flex-start, center);
       padding: 0 func.rem(60);
+      padding-bottom: 3rem;
       font-size: 1rem;
       line-height: func.rem(28);
     }
@@ -133,25 +150,27 @@
 
 @include mobile() {
   .destination {
-    padding-top: 1.5rem;
-    padding-bottom: func.rem(58);
     gap: func.rem(26);
+    padding: 0;
+    width: 90vw;
+    margin: 0 auto;
 
     &__presentation {
       text-align: center;
     }
 
     &__header {
+      padding-top: 1.5rem;
       padding-bottom: 2rem;
     }
 
     &__image {
-      width: func.rem(170);
-      height: func.rem(170);
+      width: 45vw;
     }
 
     &__text {
       padding: 0;
+      padding-bottom: 2rem;
       font-size: func.rem(15);
       line-height: func.rem(25);
     }

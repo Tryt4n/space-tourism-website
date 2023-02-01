@@ -14,7 +14,7 @@
   text-transform: uppercase;
 
   &__header {
-    padding-top: func.rem(96);
+    padding-top: func.rem(104);
   }
 
   &__main-wrapper {
@@ -26,6 +26,9 @@
   &__wrapper {
     @include flex(row, flex-start, center);
     gap: func.rem(80);
+    height: calc(
+      100vh - func.rem(104) - v.$nav-height - func.rem(33.333)
+    ); // (33.333) line height of __header (font-size: 1.75rem)
   }
 
   &__list {
@@ -52,6 +55,8 @@
 
   &__image {
     justify-self: end;
+    height: 100%;
+    padding-bottom: func.rem(101);
   }
 }
 
@@ -62,13 +67,14 @@
 
     &__main-wrapper {
       grid-template-columns: 1fr;
-      grid-template-rows: fit-content 1fr;
+      grid-template-rows: 30vh 1fr;
     }
 
     &__wrapper {
       order: 2;
       flex-direction: column;
       text-align: center;
+      height: fit-content;
     }
 
     &__list {
@@ -86,6 +92,8 @@
     &__image {
       order: 1;
       width: 100%;
+      object-fit: cover;
+      object-position: center 85%;
     }
   }
 }

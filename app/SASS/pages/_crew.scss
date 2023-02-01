@@ -7,26 +7,29 @@
 @use "../base/functions" as func;
 
 .crew {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: func.rem(62) func.rem(137) 0 func.rem(166);
-  justify-items: start;
-  gap: func.rem(81);
-  height: calc(100vh - v.$nav-height);
+  padding-left: func.rem(165);
   text-transform: uppercase;
 
-  &__wrapper {
-    @include flex(column, flex-start, flex-start);
+  &__header {
+    padding-top: func.rem(76);
+    translate: 0 func.rem(28);
   }
 
-  &__header {
-    padding-top: func.rem(34);
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  &__text-column {
+    @include flex(column, space-around);
+    height: 100%;
+    padding-top: func.rem(154 - 76);
   }
 
   &__type {
-    padding-top: func.rem(154);
-    padding-bottom: func.rem(15);
     opacity: 0.5;
+    padding-bottom: 1rem;
   }
 
   &__name {
@@ -34,13 +37,9 @@
   }
 
   &__text {
-    padding-bottom: func.rem(120);
     line-height: 2rem;
     text-transform: none;
-  }
-
-  &__btn-wrapper {
-    padding-bottom: func.rem(94);
+    height: calc(2rem * 3);
   }
 
   &__btn {
@@ -51,129 +50,119 @@
   }
 
   &__image {
+    justify-self: center;
     align-self: end;
-    justify-self: end;
+    height: calc(100vh - v.$nav-height - func.rem(110));
+    aspect-ratio: 568 / 712;
   }
 }
 
 @include mobileAndTablet() {
   .crew {
-    @include flex(column);
-    height: 100%;
-    padding: 0;
+    padding-left: 0;
+    text-align: center;
 
-    &__wrapper {
-      align-items: center;
+    &__header {
+      translate: 0;
     }
 
-    &__text {
-      text-align: center;
+    &__wrapper {
+      @include flex(column);
+    }
+
+    &__type {
+      padding-bottom: 0.5rem;
+    }
+
+    &__name {
+      padding-bottom: 1rem;
     }
 
     &__image {
+      width: 60%;
+      height: auto;
       align-self: center;
+    }
+
+    &__btn {
+      margin-right: 1rem;
     }
   }
 }
 
 @include tablet() {
   .crew {
-    gap: func.rem(40);
-    overflow-y: hidden;
-
     &__header {
       padding-top: func.rem(40);
       padding-left: func.rem(38.5);
-      align-self: flex-start;
+      text-align: start;
+    }
+
+    &__text-column {
+      padding-top: func.rem(60);
+      padding: func.rem(60) func.rem(150) 0;
     }
 
     &__type {
-      padding-top: func.rem(60);
-      padding-bottom: 0.5rem;
       font-size: 1.5rem;
     }
 
     &__name {
       font-size: func.rem(40);
-      padding-bottom: 1rem;
     }
 
     &__text {
-      padding-bottom: func.rem(40);
       font-size: 1rem;
-      max-width: func.rem(460);
       line-height: func.rem(28);
+      height: calc(func.rem(28) * 3);
+      margin-bottom: func.rem(40);
     }
 
     &__btn-wrapper {
-      padding-bottom: 0;
-    }
-
-    &__btn {
-      margin-right: 1rem;
-    }
-
-    &__image {
-      width: func.rem(456.37);
-      height: func.rem(572);
-      align-self: center;
-      translate: 0 func.rem(40);
+      margin-bottom: func.rem(40);
     }
   }
 }
 
 @include mobile() {
   .crew {
-    position: relative;
-    gap: 0;
-
     &__header {
-      position: absolute;
-      top: 0;
       padding-top: 1.5rem;
-      translate: 0 func.rem(-298);
-    }
-
-    &__image {
-      height: func.rem(298);
-      position: relative;
-      padding-top: func.rem(75);
-      translate: 0 func.rem(-223);
     }
 
     &__wrapper {
-      translate: 0 func.rem(298);
+      flex-direction: column-reverse;
     }
 
-    &__type {
-      order: 2;
-      padding: 0;
-      padding-bottom: 0.5rem;
-      font-size: 1rem;
-      line-height: func.rem(18.34);
+    &__image {
+      position: relative;
+      padding-top: 2rem;
     }
 
-    &__name {
-      order: 3;
-      font-size: 1.5rem;
-      padding-bottom: 1rem;
-    }
-
-    &__text {
-      order: 4;
-      padding: 0 1.5rem;
-      font-size: func.rem(15);
-      line-height: func.rem(25);
-      max-width: func.rem(450);
+    &__text-column {
+      padding-top: 2rem;
+      border-top: 2px solid #383b4b;
+      width: 90%;
+      @include flex(column-reverse);
+      align-self: center;
     }
 
     &__btn-wrapper {
-      order: 1;
-      padding: 2rem 0;
-      padding-top: 1.4rem;
-      border-top: 1px solid hsl(231, 15%, 26%);
-      width: 90%;
-      text-align: center;
+      padding-bottom: 2rem;
+    }
+
+    &__type {
+      font-size: 1rem;
+    }
+
+    &__name {
+      font-size: 1.5rem;
+    }
+
+    &__text {
+      font-size: func.rem(15);
+      line-height: func.rem(25);
+      padding-bottom: func.rem(104);
     }
   }
 }

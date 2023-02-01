@@ -1,94 +1,6 @@
-// const URL = "data.json";
-
-// const planetName = document.querySelector("[data-planet-name]");
-// const planetDescription = document.querySelector("[data-planet-description]");
-// const planetDistance = document.querySelector("[data-planet-distance]");
-// const planetTime = document.querySelector("[data-planet-time]");
-// const planetImage = document.querySelector("[data-planet-image]");
-// const planetDistanceSubtitle = document.querySelector("[data-planet-distance-subtitle]");
-// const planetTimeSubtitle = document.querySelector("[data-planet-time-subtitle]");
-
-// export default function fetchData() {
-//   fetch(URL)
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((items) => {
-//       // console.log(items);
-
-//       const destinationObject = items.destinations;
-//       //   console.log(destinationObject);
-
-//       destinationObject.forEach((item) => {
-//         const planets = document.querySelectorAll(`[data-destination-${item.name}]`);
-//         // console.log(planets);
-
-//         planets.forEach((planet) => {
-//           planet.addEventListener("click", () => {
-//             if (planet.classList.contains("active")) return;
-
-//             handleActiveStates(planet);
-
-//             const planetElements = [
-//               planetName,
-//               planetDescription,
-//               planetDistance,
-//               planetTime,
-//               planetImage,
-//               planetDistanceSubtitle,
-//               planetTimeSubtitle,
-//             ];
-
-//             planetName.textContent = item.name;
-//             planetDescription.textContent = item.description;
-//             planetDistance.textContent = item.distance;
-//             planetTime.textContent = item.travel;
-//             planetImage.src = `/app${item.images.png}`;
-//             planetImage.srcset = `/app${item.images.webp}`;
-
-//             planetElements.forEach((element) => fadeOut(element));
-//             setTimeout(() => {
-//               planetElements.forEach((element) => fadeIn(element));
-//             }, 300);
-//           });
-//         });
-//       });
-//     });
-// }
-// function fadeIn(element) {
-//   if (element.classList.contains("fadeOut")) {
-//     element.classList.remove("fadeOut");
-//   }
-//   element.classList.add("fadeIn");
-// }
-
-// function fadeOut(element) {
-//   if (element.classList.contains("fadeIn")) {
-//     element.classList.remove("fadeIn");
-//   }
-//   element.classList.add("fadeOut");
-// }
-
-// const moon = document.querySelector("[data-destination-moon]");
-// const mars = document.querySelector("[data-destination-mars]");
-// const europa = document.querySelector("[data-destination-europa]");
-// const titan = document.querySelector("[data-destination-titan]");
-
-// const planets = [moon, mars, europa, titan];
-
-// function handleActiveStates() {
-//   planets.forEach((planet) => {
-//     planet.addEventListener("click", () => {
-//       planets.forEach((planet) => {
-//         planet.classList.remove("active");
-//       });
-//       planet.classList.add("active");
-//       fetchData();
-//     });
-//   });
-// }
-
-const URL = "data.json";
+import slidesMenu from "./nav.js";
+import handleAnimation from "./util.js";
+slidesMenu();
 
 const planetName = document.querySelector("[data-planet-name]");
 const planetDescription = document.querySelector("[data-planet-description]");
@@ -98,12 +10,10 @@ const planetImage = document.querySelector("[data-planet-image]");
 const planetDistanceSubtitle = document.querySelector("[data-planet-distance-subtitle]");
 const planetTimeSubtitle = document.querySelector("[data-planet-time-subtitle]");
 
-const moon = document.querySelector("[data-destination-moon]");
-const mars = document.querySelector("[data-destination-mars]");
-const europa = document.querySelector("[data-destination-europa]");
-const titan = document.querySelector("[data-destination-titan]");
-
-const planets = [moon, mars, europa, titan];
+const btnMoon = document.querySelector("[data-destination-moon]");
+const btnMars = document.querySelector("[data-destination-mars]");
+const btnEuropa = document.querySelector("[data-destination-europa]");
+const btnTitan = document.querySelector("[data-destination-titan]");
 
 const planetElements = [
   planetName,
@@ -114,63 +24,55 @@ const planetElements = [
   planetDistanceSubtitle,
   planetTimeSubtitle,
 ];
+const planetButtons = [btnMoon, btnMars, btnEuropa, btnTitan];
 
-export default function fetchData() {
-  fetch(URL)
-    .then((response) => {
-      return response.json();
-    })
-    .then((items) => {
-      const destinationObject = items.destinations;
+const URL = "data.json";
 
-      destinationObject.forEach((item) => {
-        const planets = document.querySelectorAll(`[data-destination-${item.name}]`);
+fetch(URL)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    const destinationData = data.destinations;
+    displayData(0);
+    planetButtons.map(handlePlanetButtons);
 
-        planets.forEach((planet) => {
-          planet.addEventListener("click", () => {
-            if (planet.classList.contains("active")) return;
+    function displayData(planetElement) {
+      planetButtons.map((btn, index) => {
+        btn.textContent = destinationData[index].name;
+      });
+      planetName.textContent = destinationData[planetElement].name;
+      planetDescription.textContent = destinationData[planetElement].description;
+      planetDistance.textContent = destinationData[planetElement].distance;
+      planetTime.textContent = destinationData[planetElement].travel;
+      planetImage.src = `${destinationData[planetElement].images.png}`;
+      planetImage.srcset = `${destinationData[planetElement].images.webp}`;
+      planetImage.alt = `${destinationData[planetElement].name} Picture`;
+    }
 
-            handleActiveStates(planet);
+    function handlePlanetButtons(planetButtonElement) {
+      planetButtonElement.addEventListener("click", handleClick);
+      planetButtonElement.addEventListener("keydown", handleKeyDown);
 
-            planetName.textContent = item.name;
-            planetDescription.textContent = item.description;
-            planetDistance.textContent = item.distance;
-            planetTime.textContent = item.travel;
-            planetImage.src = `/app${item.images.png}`;
-            planetImage.srcset = `/app${item.images.webp}`;
-
-            planetElements.forEach((element) => fadeOut(element));
-            setTimeout(() => {
-              planetElements.forEach((element) => fadeIn(element));
-            }, 300);
+      function handleClick() {
+        if (!planetButtonElement.classList.contains("active")) {
+          displayData(planetButtons.indexOf(planetButtonElement));
+          planetButtons.forEach((btn) => {
+            btn.classList.remove("active");
+            btn.tabIndex = "0";
+            btn.removeAttribute("aria-disabled");
+            handleAnimation(planetElements);
           });
-        });
-      });
-    });
-}
+          planetButtonElement.classList.add("active");
+          planetButtonElement.tabIndex = "-1";
+          planetButtonElement.setAttribute("aria-disabled", "true");
+        }
+      }
 
-function handleActiveStates() {
-  planets.forEach((planet) => {
-    planet.addEventListener("click", () => {
-      planets.forEach((planet) => {
-        planet.classList.remove("active");
-      });
-      planet.classList.add("active");
-      fetchData();
-    });
+      function handleKeyDown(e) {
+        if (e.key === "Enter") {
+          handleClick();
+        }
+      }
+    }
   });
-}
-
-function fadeIn(element) {
-  if (element.classList.contains("fadeOut")) {
-    element.classList.remove("fadeOut");
-  }
-  element.classList.add("fadeIn");
-}
-
-function fadeOut(element) {
-  if (element.classList.contains("fadeIn")) {
-    element.classList.remove("fadeIn");
-  }
-  element.classList.add("fadeOut");
-}

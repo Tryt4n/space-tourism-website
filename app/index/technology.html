@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/dist/style.css" />
-    <script src="/app/script/script.js" type="module"></script>
+    <script src="/app/script/technology.js" type="module"></script>
     <title>Space tourism website | TECHNOLOGY</title>
   </head>
   <body class="background-technology">
@@ -69,6 +69,8 @@
               href="technology.html"
               class="navigation-element nav__menu--item active"
               tabindex="-1"
+              aria-disabled="true"
+              aria-label="You are here"
               ><em>03</em>&nbsp;Technology</a
             >
           </li>
@@ -89,30 +91,22 @@
                 role="button"
                 disabled
                 aria-disabled="true"
+                data-slider-digit-1
               >
                 1
               </li>
-              <li class="slider-digit" tabindex="0" role="button">2</li>
-              <li class="slider-digit" tabindex="0" role="button">3</li>
+              <li class="slider-digit" tabindex="0" role="button" data-slider-digit-2>2</li>
+              <li class="slider-digit" tabindex="0" role="button" data-slider-digit-3>3</li>
             </ol>
 
             <div class="technology__text-wrap">
               <p class="technology__subheading">the terminology&nbsp;...</p>
-              <h3 class="technology__title">launch vehicle</h3>
-              <p class="technology__text">
-                A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a
-                payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X
-                carrier rocket is the most powerful in operation. Standing 150 metres tall, it's
-                quite an awe-inspiring sight on the launch pad!
-              </p>
+              <h3 class="technology__title" data-technology-title></h3>
+              <p class="technology__text" data-technology-text></p>
             </div>
           </div>
 
-          <img
-            src="/app/assets/technology/image-launch-vehicle-portrait.jpg"
-            alt="Launch rocket image"
-            class="technology__image"
-          />
+          <img class="technology__image" data-technology-image />
         </div>
       </section>
     </main>

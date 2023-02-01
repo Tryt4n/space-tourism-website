@@ -1,9 +1,10 @@
+import slidesMenu from "./nav.js";
+slidesMenu();
+
 const exploreBtn = document.querySelector("[data-explore-btn]");
 
-export default function changePageOnBtn() {
-  if (exploreBtn) {
-    exploreBtn.addEventListener("click", () => {
-      window.location.href = "destination.html";
-    });
-  }
+if (exploreBtn) {
+  exploreBtn.addEventListener("click", () => {
+    window.location.href = "destination.html";
+  });
 }
