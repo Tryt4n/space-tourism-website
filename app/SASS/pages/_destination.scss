@@ -7,6 +7,15 @@
 @use "../base/typography" as typo;
 @use "../base/functions" as func;
 
+@keyframes planetAnimation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .destination {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -24,7 +33,7 @@
 
   &__image {
     padding-left: func.rem(65);
-    user-select: none;
+    animation: planetAnimation 20000ms linear infinite;
   }
 
   &__text {
